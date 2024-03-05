@@ -4,15 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    /*public HashSet<String> buatHashSet(){
 
-    }
-    public TreeSet<String> buatTreeSet(){
-
-    }
-    public Queue<String> buatQueue(){
-
-    }*/
     public static Map<Integer,String> buatMap(List<String> input){
 
         Map<Integer,String> mapped = new HashMap<Integer,String>();
