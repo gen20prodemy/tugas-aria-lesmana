@@ -11,7 +11,7 @@ public class InputCustom {
 
         public static void main (String[] args) throws ExceptionInputSalah {
 
-            System.out.println("Masukkan input sembarang:");
+            System.out.println("Masukkan input > 0:");
             Scanner in = new Scanner(System.in);
 
             int n = in.nextInt();
@@ -23,7 +23,7 @@ public class InputCustom {
                 System.out.println("Exception buatan tertangkap");
             }
 
-            cekInputAngka(n);//menimbulkan error
+            cekInputAngka(n);//menimbulkan error biasa
 
         }
     }
