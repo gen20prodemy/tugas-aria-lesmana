@@ -1,6 +1,5 @@
 
 
-import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -20,70 +19,97 @@ public class Main {
 
     public static void main(String[] args) {
 
-         List<String> l1 = new ArrayList<String>();
-        l1.add("Apel");
-        l1.add("Banana");
-        l1.add("Citrus");
-        l1.add("Delima");
-        l1.add("Enau");
+        List<String> list1 = new ArrayList<String>();
+        list1.add("Apel");
+        list1.add("Banana");
+        list1.add("Citrus");
+        list1.add("Delima");
+        list1.add("Elderberry");
 
-        Iterator<String> l1Iterator = l1.iterator();
+        Iterator<String> list1Iterator = list1.iterator();
 
-        while(l1Iterator.hasNext()) {
-            System.out.println(l1Iterator.next());
+        System.out.print("ArrayList elements: ");
+        while(list1Iterator.hasNext()) {
+            System.out.print(list1Iterator.next());
+            System.out.print(", ");
         }
+        System.out.println("\n");
 
+        Set<String> hashset1 = new HashSet<String>(list1);
 
-        Set<String> s1 = new HashSet<String>(l1);
+        for(String x: list1) hashset1.add(x);//hashset menggunakan iterasi manual
 
-        for(String x:l1) s1.add(x);
-
-        System.out.print("Hashset1 elements: ");
-        for(String x:s1) {
+        System.out.print("List ke Hashset1 elements: ");
+        for(String x: hashset1) {
             System.out.print(x);
             System.out.print(", ");
         }
-        System.out.println();
-        Set<String> s2 = new HashSet<String>(l1);
-        s2.addAll(l1);
+        System.out.println("\n");
 
-        System.out.print("Hashset2 elements: ");
-        for(String x:s2) {
+        Set<String> hashset2 = new HashSet<String>(list1);
+        hashset2.addAll(list1);//hashset menggunakan method addall
+
+        System.out.print("List ke Hashset2 (addAll) elements: ");
+        for(String x: hashset2) {
             System.out.print(x);
             System.out.print(", ");
         }
-        System.out.println();
-        Set<String> t1 = new TreeSet<String>(l1);
-        t1.addAll(l1);
+        System.out.println("\n");
 
-        Iterator<String> t1Iterator = t1.iterator();
-        System.out.print("Treeset elements: ");
-        while(t1Iterator.hasNext()) {
-            System.out.print(t1Iterator.next());
+        List<String> list2 = new ArrayList<String>();
+        list2.addAll(hashset1);
+        System.out.print("HashSet ke List elements: ");
+        for(String x: list2) {
+            System.out.print(x);
             System.out.print(", ");
         }
-        System.out.println();
-        Queue<String> myQueue = new LinkedList<>(l1);
+        System.out.println("\n");
 
 
-        System.out.print("Queue elements: ");
+        Set<String> treeset1 = new TreeSet<String>(list1);
+        treeset1.addAll(list1);
 
-
-        while (!myQueue.isEmpty()) {
-            System.out.print(myQueue.poll()+", ");
+        Iterator<String> tree1Iterator = treeset1.iterator();
+        System.out.print("List ke Treeset elements: ");
+        while(tree1Iterator.hasNext()) {
+            System.out.print(tree1Iterator.next());
+            System.out.print(", ");
         }
-        System.out.println();
+        System.out.println("\n");
 
-        Map <Integer,String> m1 = buatMap(l1);
+        List<String> list3 = new ArrayList<String>();
+        list3.addAll(treeset1);
+        System.out.print("TreeSet ke List elements: ");
+        for(String x: list3) {
+            System.out.print(x);
+            System.out.print(", ");
+        }
+        System.out.println("\n");
 
-        System.out.println("Map elements:");
+        Queue<String> queue1 = new LinkedList<>(list1);
+        System.out.print("List ke Queue elements: ");
+
+        while (!queue1.isEmpty()) {
+            System.out.print(queue1.poll()+", ");
+        }
+        System.out.println("\n");
+
+        Map <Integer,String> map1 = buatMap(list1);
+
+        System.out.println("List ke Map elements:");
         for (Map.Entry<Integer, String> y :
-                m1.entrySet()) {
+                map1.entrySet()) {
 
             // Printing keys
             System.out.print(y.getKey() + ":");
             System.out.println(y.getValue());
         }
+        System.out.println();
+
+        Vector<String> vector1 = new Vector<String>(list1);
+        System.out.println("List ke Vector elements: " + vector1);
+        Vector<String> vector2 = new Vector<String>(hashset1);
+        System.out.println("HashSet ke Vector elements: " + vector2);
 
     }
 }
