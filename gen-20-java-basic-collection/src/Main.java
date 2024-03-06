@@ -4,9 +4,8 @@ import java.util.*;
 
 public class Main {
 
-    public static List<String> buatList(String[] item){
-        List<String> barang = new ArrayList<String>();
-        barang = Arrays.asList(item);
+    public static ArrayList<String> buatList(String[] item){
+        ArrayList<String> barang = new ArrayList<String>(Arrays.asList(item));
         return barang;
     }
 
@@ -21,6 +20,11 @@ public class Main {
         System.out.println("\n");
     }
 
+    public static void tambahKeList(List<String> ls, String added){
+        ls.add(added);
+        printList(ls);
+    }
+
     public static void cariList(List<String> ls, String find){
 
         boolean found =false;
@@ -31,7 +35,7 @@ public class Main {
             }
         }
         if(!found) System.out.println("Tidak ketemu");
-        System.out.println("\n");
+
     }
 
     public static void konversiList(List<String> ls){
@@ -125,7 +129,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String[] buah = {"Apple","Banana","Citrus","Durian","Elderberry","Cavendish Banana"};
+        String[] buah = {"Apple","Banana","Citrus","Durian","Elderberry","Apple Hijau", "Cavendish Banana"};
         //List<String> list1 = new ArrayList<String>();
         List<String> list1 = buatList(buah);
         /*list1.add("Apel");
@@ -140,7 +144,8 @@ public class Main {
         System.out.println("Menu: ");
         System.out.println("1.Print daftar item");
         System.out.println("2.Cari item");
-        System.out.println("3.Konversi dan print daftar item");
+        System.out.println("3.Tambah item");
+        System.out.println("4.Konversi dan print daftar item");
         int select = scan.nextInt();
         if(select==1) printList(list1);
 
@@ -150,6 +155,12 @@ public class Main {
             String in = scan.nextLine();
             cariList(list1,in);
         }
-        if(select==3) konversiList(list1);
+        if(select==3) {
+            scan.nextLine();
+            System.out.println("Tambah item dengan nama: ");
+            String in = scan.nextLine();
+            tambahKeList(list1,in);
+        }
+        if(select==4) konversiList(list1);
     }
 }
