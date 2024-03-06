@@ -21,6 +21,12 @@ public class Main {
         System.out.println("\n");
     }
 
+    public static void cariList(List<String> ls, String find){
+        if (ls.contains(find))
+            System.out.print("Item bernama " + find + " ada di index: " + ls.indexOf(find));
+        System.out.println("\n");
+    }
+
     public static Map<Integer,String> buatMap(List<String> input){
 
         Map<Integer,String> mapped = new HashMap<Integer,String>();
@@ -59,10 +65,7 @@ public class Main {
             scan.nextLine();
             System.out.println("Cari item berdasarkan string: ");
             String in = scan.nextLine();
-            if (list1.contains(in))
-                System.out.print("Item bernama " + in + " ada di index: " + list1.indexOf(in));
-
-            System.out.println("\n");
+            cariList(list1,in);
         }
         if(select==3) {
             System.out.print("List ke Hashset1 elements: ");
