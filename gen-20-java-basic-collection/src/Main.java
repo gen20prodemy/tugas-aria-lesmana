@@ -22,15 +22,22 @@ public class Main {
     }
 
     public static void cariList(List<String> ls, String find){
-        if (ls.contains(find))
-            System.out.print("Item bernama " + find + " ada di index: " + ls.indexOf(find));
+
+        boolean found =false;
+        for(int i = 0;i< ls.size();i++) {
+            if (ls.get(i).contains(find)) {
+                System.out.println("Item bernama " + ls.get(i) + " ada di index: " + i);
+                found = true;
+            }
+        }
+        if(!found) System.out.println("Tidak ketemu");
         System.out.println("\n");
     }
 
     public static Map<Integer,String> buatMap(List<String> input){
 
         Map<Integer,String> mapped = new HashMap<Integer,String>();
-        int i=0;
+        int i=1;
         for(String x: input) {
             mapped.put(i,x);
             i++;
@@ -42,7 +49,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String[] buah = {"Apel","Banana","Citrus","Delima","Elderberry"};
+        String[] buah = {"Apple","Banana","Citrus","Durian","Elderberry","Cavendish Banana"};
         //List<String> list1 = new ArrayList<String>();
         List<String> list1 = buatList(buah);
         /*list1.add("Apel");
