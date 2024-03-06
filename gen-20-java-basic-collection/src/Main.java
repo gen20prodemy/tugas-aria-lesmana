@@ -75,7 +75,6 @@ public class Main {
             cariList(list1,in);
         }
         if(select==3) {
-            System.out.print("List ke Hashset1 elements: ");
 
             Set<String> hashset1 = new HashSet<String>(list1);
 
