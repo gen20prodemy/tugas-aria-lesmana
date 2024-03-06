@@ -14,8 +14,6 @@ public class Main {
         Minuman airMineral = new Minuman("Air Mineral",3000);
         Obat paracetamol = new Obat("Paracetamol",8000);
 
-        System.out.println(mieInstan.getNama());
-
         mieInstan.adakanPromo();
         airMineral.adakanPromo();
         paracetamol.adakanPromo();
@@ -30,9 +28,13 @@ public class Main {
             System.out.println(x.getHarga());
 
         }
+        System.out.println("Setelah harga diubah:");
+        mieInstan.setHarga(10000);
+        airMineral.setHarga(6000);
+        paracetamol.setHarga(5000);
 
         for (Product y : stok ){
-            y.setHarga();
+
             System.out.print(y.getNama() + " = ");
             System.out.println(y.getHarga());
         }
