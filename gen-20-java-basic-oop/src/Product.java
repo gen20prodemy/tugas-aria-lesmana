@@ -1,14 +1,18 @@
 public class Product {
-    int harga=0;
+    int harga=1000;
     String nama = " ";
+    String tipe = "Produk";
 
+    public Product(String nama){
+        this.nama=nama;
+    }
 
-    public Product(String nama, int harga ){
+    public Product(String nama, int harga){
         this.nama=nama;
         this.harga=harga;
     }
 
-    public void setHarga(){
+    public void resetHarga(){
         this.harga = 1000;
     }
 
@@ -26,9 +30,8 @@ public class Product {
     public String getNama(){
         return nama;
     }
-    public void isiBersih(){
-        System.out.println("Kilogram");
-    }
+    public String getTipe() {return tipe;}
+
     public void adakanPromo(){
         System.out.println("Diskon 10% untuk total pembelian diatas 100.000");
     }

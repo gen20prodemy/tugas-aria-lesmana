@@ -1,14 +1,18 @@
 public class Minuman extends Product{
 
+
+    public Minuman(String nama) {
+        super(nama, 4000);
+        this.tipe="Minuman";
+    }
+
     public Minuman(String nama, int harga) {
+
         super(nama, harga);
+        this.tipe="Minuman";
     }
 
-    public void isiBersih(){
-        System.out.println("Mililiter");
-    }
-    public void setHarga(){
-
+    public void resetHarga(){
         this.harga = 4000;
         System.out.println("Harga default utk minuman:"+harga);
     }

@@ -1,14 +1,17 @@
 public class Obat extends Product {
 
+    public Obat(String nama) {
+        super(nama,8000);
+        this.tipe="Obat";
+    }
     public Obat(String nama, int harga) {
         super(nama, harga);
+        this.tipe="Obat";
     }
-    public void isiBersih(){
-        System.out.println("Tablet/Kaplet");
-    }
-    public void setHarga(){
 
-        this.harga = 8000;
+    public void resetHarga(){
+
+        this.harga=8000;
         System.out.println("Harga default utk obat:"+harga);
     }
 
