@@ -1,9 +1,10 @@
 package MapCrud;
 
 import CrudTemplate.CrudInterface;
-import DataSiswa.DataSiswa;
+import POJO.DataSiswa;
 
 import java.util.Map;
+import java.util.Scanner;
 import java.util.TreeMap;
 
 public class Main {
@@ -13,6 +14,7 @@ public class Main {
         DataSiswa siswa1 = new DataSiswa(123,"Paijo",true);
         DataSiswa siswa2 = new DataSiswa(211,"Sutisna",false);
         DataSiswa siswa3 = new DataSiswa(301,"Susana",true);
+        Scanner scan = new Scanner(System.in);
 
         CrudInterface crud = new CrudToMap();
 
@@ -20,18 +22,47 @@ public class Main {
         crud.addData(daftar,siswa2);
         crud.addData(daftar,siswa3);
 
-        crud.readData(daftar);
+        boolean repeat = true;
+        while(repeat){
+        System.out.println("Menu:");
+        System.out.println("1. Tampilkan data");
+        System.out.println("2. Tampilkan data spesifik");
+        System.out.println("3. Update data");
+        System.out.println("4. Hapus data");
+        int select = scan.nextInt();
+        int input;
+        switch(select) {
 
-        System.out.println("Operasi read data spesifik");
-        crud.readData(daftar,211);
-        System.out.println("Operasi update data");
-        crud.updateData(daftar,211,"Sule",true);
+            case 1:
+                crud.readData(daftar);
+                break;
 
-        crud.readData(daftar);
+            case 2:
+                System.out.println("Input Id Siswa:");
+                input = scan.nextInt();
+                crud.readData(daftar, input);
+                break;
 
-        System.out.println("Operasi delete data");
-        crud.deleteData(daftar,123);
+            case 3:
+                System.out.println("Input Id Siswa: ");
+                input = scan.nextInt();
+                System.out.println("Input Nama Siswa: ");
+                scan.nextLine();
+                System.out.println("Input status lulus:");
+                String newNama = scan.nextLine();
+                boolean newLulus = Boolean.parseBoolean(scan.nextLine());
+                crud.updateData(daftar, input, newNama, newLulus);
+                break;
 
-        crud.readData(daftar);
+            case 4:
+                System.out.println("Input Id Siswa: ");
+                input = scan.nextInt();
+                crud.deleteData(daftar, input);
+                break;
+
+            default: repeat=false;
+        }
+
+        }
     }
 }

@@ -1,7 +1,7 @@
 package FileCrud;
 
 import CrudTemplate.CrudAbstract;
-import DataSiswa.DataSiswa;
+import POJO.DataSiswa;
 
 import java.io.File;
 import java.io.IOException;

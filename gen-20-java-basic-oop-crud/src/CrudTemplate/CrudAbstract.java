@@ -1,7 +1,7 @@
 package CrudTemplate;
 
 import java.io.File;
-import DataSiswa.DataSiswa;
+import POJO.DataSiswa;
 
 public abstract class CrudAbstract {
 

@@ -1,4 +1,4 @@
-package DataSiswa;
+package POJO;
 
 public class DataSiswa {
     int id;

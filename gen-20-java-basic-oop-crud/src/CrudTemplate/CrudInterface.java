@@ -1,6 +1,6 @@
 package CrudTemplate;
 
-import DataSiswa.DataSiswa;
+import POJO.DataSiswa;
 
 import java.util.Map;
 

@@ -1,7 +1,7 @@
 package MapCrud;
 
 import CrudTemplate.CrudInterface;
-import DataSiswa.DataSiswa;
+import POJO.DataSiswa;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -49,8 +49,6 @@ public class CrudToMap implements CrudInterface {
     }
     @Override
     public void deleteData(Map<Integer, DataSiswa> m, int id) {
-        //Iterator<Map.Entry<Integer, DataSiswa>> it = m.entrySet().iterator();
-
         boolean exist=false;
 
         for(Map.Entry<Integer,DataSiswa> entry: m.entrySet()){
@@ -61,14 +59,6 @@ public class CrudToMap implements CrudInterface {
                 break;
             }
         }
-        /*while(it.hasNext()){
-            entry=it.next();
-            if ((entry.getValue().getId())==id) {
-                exist=true;
-                int key =entry.getKey();
-                m.remove(key);
-            }
-        }*/
 
         if(!exist) System.out.println("Data tdk ditemukan");
     }
