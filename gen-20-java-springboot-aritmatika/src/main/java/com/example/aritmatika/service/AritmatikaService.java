@@ -9,16 +9,16 @@ public class AritmatikaService {
 
     }
 
-    public int addition(int a,int b){
+    public double addition(double a,double b){
         return a+b;
     }
-    public int subtract(int a,int b){
+    public double subtract(double a,double b){
         return a-b;
     }
-    public int multiply(int a,int b){
+    public double multiply(double a,double b){
         return a*b;
     }
-    public int division(int a,int b){
+    public double division(double a,double b){
         if (b==0){
             throw new ArithmeticException("Divide by zero");
         }

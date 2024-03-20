@@ -1,27 +1,27 @@
 package com.example.aritmatika.dto;
 
 public class Aritmatika {
-    private int a;
-    private int b;
+    private double a;
+    private double b;
 
-    public Aritmatika(int a, int b) {
+    public Aritmatika(double a, double b) {
         this.a = a;
         this.b = b;
     }
 
-    public int getA() {
+    public double getA() {
         return a;
     }
 
-    public void setA(int a) {
+    public void setA(double a) {
         this.a = a;
     }
 
-    public int getB() {
+    public double getB() {
         return b;
     }
 
-    public void setB(int b) {
+    public void setB(double b) {
         this.b = b;
     }
 }
