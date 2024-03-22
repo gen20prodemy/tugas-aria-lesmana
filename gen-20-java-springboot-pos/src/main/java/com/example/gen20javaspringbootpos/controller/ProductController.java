@@ -1,15 +1,13 @@
 package com.example.gen20javaspringbootpos.controller;
 
-import com.example.gen20javaspringbootpos.model.Product;
+import com.example.gen20javaspringbootpos.entity.Product;
 import com.example.gen20javaspringbootpos.model.ResponseInsert;
-import com.example.gen20javaspringbootpos.service.ProductImplementation;
-import com.example.gen20javaspringbootpos.service.ProductRepository;
+import com.example.gen20javaspringbootpos.repository.ProductRepository;
 import com.example.gen20javaspringbootpos.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -17,18 +15,16 @@ import java.util.List;
 import java.util.Optional;
 
 @ComponentScan({"com.gen-20-java-springboot-pos."})
-@RequestMapping(path="api")
+@RequestMapping(path="apiprod")
 @RestController
 public class ProductController{
 
     @Autowired
     @Qualifier("productService")
     private ProductService productService;
-    @Autowired
-    private ProductRepository productRepo;
 
-    @PostMapping("/productid")
-    public Optional<Product> findById(int id){
+    @PostMapping("/productid/{id}")
+    public Optional<Product> findById(@PathVariable("id") int id){
         return productService.findById(id);
     }
 
@@ -42,16 +38,29 @@ public class ProductController{
     //public String test() { return "test ok"; }
 
 
-    @PostMapping("/findcat")
+    @PostMapping("/bycat")
     public List<Product> findCat(int catId) { return productService.findByCategoryId(catId); }
+
+    @PostMapping("/bycatname")
+    public List<Product> findCatName(String name) {
+        int id = productService.findByCategoryName(name).get(0).getId();
+        return findCat(id);
+    }
 
     //method API insert
     @PostMapping("/insert")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public ResponseInsert insertProduct(@RequestBody Product pr) {
         productService.insertProduct(pr);
-        return new ResponseInsert(HttpStatus.OK.value(),"Berhasil Insert");
+        return new ResponseInsert(HttpStatus.CREATED.value(),"Berhasil Insert");
+    }
+
+    @PostMapping("/delete")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseInsert deleteProduct(int id){
+        productService.deleteProduct(id);
+        return new ResponseInsert(HttpStatus.OK.value(),"Berhasil Delete");
     }
 
 }

@@ -1,0 +1,51 @@
+package com.example.gen20javaspringbootpos.controller;
+
+import com.example.gen20javaspringbootpos.entity.Category;
+import com.example.gen20javaspringbootpos.entity.Product;
+import com.example.gen20javaspringbootpos.model.ResponseInsert;
+import com.example.gen20javaspringbootpos.repository.CategoryRepository;
+import com.example.gen20javaspringbootpos.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+
+import java.util.List;
+import java.util.Optional;
+
+@ComponentScan({"com.gen-20-java-springboot-pos."})
+@RequestMapping(path="apicat")
+@RestController
+public class CategoryController{
+
+    @Autowired
+    @Qualifier("categoryService")
+    private CategoryService categoryService;
+
+    @PostMapping("/categoryid")
+    public Optional<Category> findById(int id){
+        return categoryService.findById(id);
+    }
+
+    @PostMapping("/byname")
+    public List<Category> findCatName(String name) {
+        return categoryService.findByName(name);
+    }
+    //method API Select
+    @PostMapping("/allcategory")
+    public List<Category> fetchCatList() {
+        return categoryService.fetchCatList();
+    }
+
+    //method API insert
+    @PostMapping("/insert")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public ResponseInsert insertCategory(@RequestBody Category cat) {
+        categoryService.insertCategory(cat);
+        return new ResponseInsert(HttpStatus.CREATED.value(),"Berhasil Insert");
+    }
+
+}

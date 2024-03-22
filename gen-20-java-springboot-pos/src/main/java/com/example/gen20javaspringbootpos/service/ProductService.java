@@ -1,6 +1,9 @@
 package com.example.gen20javaspringbootpos.service;
 
-import com.example.gen20javaspringbootpos.model.Product;
+import com.example.gen20javaspringbootpos.entity.Category;
+import com.example.gen20javaspringbootpos.entity.Product;
+import com.example.gen20javaspringbootpos.repository.CategoryRepository;
+import com.example.gen20javaspringbootpos.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,9 @@ public class ProductService {//implements ProductImplementation{
 
     @Autowired
     private ProductRepository productRepo;
+    @Autowired
+    private CategoryRepository catRepo;
+
 
     public ProductService(){
         /*listProduct = new ArrayList<>();
@@ -44,4 +50,12 @@ public class ProductService {//implements ProductImplementation{
     public void insertProduct(Product p) {
         productRepo.save(p);
     }
+
+    public void deleteProduct(int id){ productRepo.deleteById(id);}
+
+    public List<Category> findByCategoryName(String categoryName) {
+        return catRepo.findByName(categoryName);
+    }
+
+
 }
