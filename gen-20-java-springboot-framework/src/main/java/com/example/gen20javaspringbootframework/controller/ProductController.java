@@ -70,4 +70,10 @@ public class ProductController{
         return "index";
     }
 
+    @GetMapping("/indexdefault")
+    public String productTableDefault(Model model){
+        model.addAttribute("products",productService.getProductDefault());
+        return "index";
+    }
+
 }

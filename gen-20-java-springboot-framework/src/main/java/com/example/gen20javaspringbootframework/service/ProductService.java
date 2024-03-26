@@ -7,11 +7,14 @@ import com.example.gen20javaspringbootframework.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.gen20javaspringbootframework.entity.Category;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProductService {//implements ProductImplementation{
+public class ProductService {
     private List<Product> listProduct;
 
     @Autowired
@@ -21,16 +24,19 @@ public class ProductService {//implements ProductImplementation{
 
 
     public ProductService(){
-        /*listProduct = new ArrayList<>();
-        Product p1=new Product(1, "AAA", 10000,1,30);
-        Product p2=new Product(2, "BBB", 10000,1,30);
-
-        listProduct.addAll(Arrays.asList(p1,p2));*/
+        listProduct = new ArrayList<>();
+        Product p1=new Product(1, "Chiki", 5000,1,50);
+        Product p2=new Product(2, "Kopi", 5000,2,70);
+        Product p3=new Product(3, "Panadol", 7000,3,100);
+        Product p4=new Product(4, "Teh", 3000,2,100);
+        Product p5=new Product(5, "Susu", 7000,2,30);
+        Product p6=new Product(6, "Roti", 10000,1,50);
+        listProduct.addAll(Arrays.asList(p1,p2,p3,p4,p5,p6));
     }
 
-    //public List<Product> getProduct(){
-    //    return listProduct;
-    //}
+    public List<Product> getProductDefault(){
+        return listProduct;
+    }
 
     //@Override
     public Optional<Product> findById(int id){
