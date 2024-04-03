@@ -1,18 +1,23 @@
 package com.example.gen20javaspringbootpos.model;
 
-import com.google.gson.annotations.SerializedName;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OngkirProvinceDto {
+public class OngkirCostDetailDto {
 
-    @SerializedName("province_id")
-    private int provinceId;
-    private String province;
+    private String service;
+    private String description;
+    private List<OngkirCostValueDto> cost;
+
+
 }
