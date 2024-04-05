@@ -1,9 +1,7 @@
 package com.example.gen20javaspringbootpos.controller;
 
-import com.example.gen20javaspringbootpos.entity.Category;
 import com.example.gen20javaspringbootpos.entity.Customer;
-import com.example.gen20javaspringbootpos.model.ResponseInsert;
-import com.example.gen20javaspringbootpos.service.CategoryService;
+import com.example.gen20javaspringbootpos.model.ResponseFormat;
 import com.example.gen20javaspringbootpos.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,7 +23,7 @@ public class CustomerController {
     private CustomerService custService;
 
     @PostMapping("/custid")
-    public Optional<Customer> findById(int id){
+    public Optional<Customer> findById(@RequestParam int id){
         return custService.findById(id);
     }
 
@@ -47,24 +45,24 @@ public class CustomerController {
     @PostMapping("/insert")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public ResponseInsert insertCustomer(@RequestBody Customer cust) {
+    public ResponseFormat insertCustomer(@RequestBody Customer cust) {
         custService.insertCustomer(cust.getId(), cust.getName(), cust.getEmail(),cust.getMobileNumber());
-        return new ResponseInsert(HttpStatus.CREATED.value(),"Berhasil Insert");
+        return new ResponseFormat(HttpStatus.CREATED.value(),"Berhasil Insert");
     }
 
     @PostMapping("/insertjpq")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public ResponseInsert insertCustomerJpq(@RequestBody Customer cust) {
+    public ResponseFormat insertCustomerJpq(@RequestBody Customer cust) {
         custService.insertCustomerJpq(cust.getId(), cust.getName(), cust.getEmail(),cust.getMobileNumber());
-        return new ResponseInsert(HttpStatus.CREATED.value(),"Berhasil Insert");
+        return new ResponseFormat(HttpStatus.CREATED.value(),"Berhasil Insert");
     }
 
     @PostMapping("/delete")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseInsert deleteCustomer(int id){
+    public ResponseFormat deleteCustomer(int id){
         custService.deleteCustomer(id);
-        return new ResponseInsert(HttpStatus.OK.value(),"Berhasil Delete");
+        return new ResponseFormat(HttpStatus.OK.value(),"Berhasil Delete");
     }
 }
 

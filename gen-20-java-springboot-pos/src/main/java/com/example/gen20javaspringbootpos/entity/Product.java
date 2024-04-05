@@ -1,16 +1,25 @@
 package com.example.gen20javaspringbootpos.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Entity(name = "Product")
-public class Product {
+@Table(name = "product", schema = "pos")
+public class Product implements Serializable {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @Column(name = "id", nullable = false)
     private int id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "price")
     private int price;
+    @Column(name = "category_id", nullable = false)
     private int categoryId;
+    @Column(name = "quantity")
     private int quantity;
 
     public Product(){}

@@ -9,5 +9,4 @@ public class Transaction {
     int invoice_id;
     String name;
     int quantity;
-    int price;
 }

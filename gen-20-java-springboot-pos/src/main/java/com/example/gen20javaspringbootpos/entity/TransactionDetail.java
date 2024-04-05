@@ -3,10 +3,12 @@ package com.example.gen20javaspringbootpos.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import org.hibernate.annotations.Immutable;
 
 
-@Entity(name="transactiondetail")
+@Entity
+@Table(name="transactiondetail")
 @Immutable
 public class TransactionDetail {
     @Id

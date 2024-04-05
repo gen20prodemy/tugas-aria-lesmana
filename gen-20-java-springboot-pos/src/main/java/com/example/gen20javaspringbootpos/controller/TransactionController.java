@@ -1,6 +1,6 @@
 package com.example.gen20javaspringbootpos.controller;
 
-import com.example.gen20javaspringbootpos.model.ResponseInsert;
+import com.example.gen20javaspringbootpos.model.ResponseFormat;
 import com.example.gen20javaspringbootpos.entity.TransactionDetail;
 import com.example.gen20javaspringbootpos.repository.TransactionRepository;
 import com.example.gen20javaspringbootpos.service.TransactionService;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @ComponentScan({"com.gen-20-java-springboot-pos."})
-@RequestMapping(path="apitran")
+@RequestMapping(path="api/transaction")
 @RestController
 public class TransactionController{
 
@@ -25,13 +25,13 @@ public class TransactionController{
     @Autowired
     private TransactionRepository tranRepo;
 
-    @PostMapping("/transactionid")
+    @PostMapping("/byid")
     public Optional<TransactionDetail> findById(int id){
         return transactionService.findById(id);
     }
 
     //method API Select
-    @PostMapping("/alltransaction")
+    @PostMapping("/showall")
     public List<TransactionDetail> fetchTranList() {
         return transactionService.fetchTranList();
     }
@@ -41,9 +41,9 @@ public class TransactionController{
     @PostMapping("/insert")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public ResponseInsert insertTransaction(@RequestBody TransactionDetail tr) {
+    public ResponseFormat insertTransaction(@RequestBody TransactionDetail tr) {
         transactionService.insertTransaction(tr);
-        return new ResponseInsert(HttpStatus.CREATED.value(),"Berhasil Insert");
+        return new ResponseFormat(HttpStatus.CREATED.value(),"Berhasil Insert");
     }
 
 }
